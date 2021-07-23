@@ -32,6 +32,6 @@ export const sendNotification = async (
   webhookUrl: string
 ): Promise<void> => {
   await axios.post(webhookUrl, {
-    notification,
+    ...notification,
   })
 }

@@ -10300,9 +10300,7 @@ const buildNotification = (body) => {
  * @returns {Promise<void>}
  */
 const sendNotification = (notification, webhookUrl) => __awaiter(void 0, void 0, void 0, function* () {
-    yield axios_default().post(webhookUrl, {
-        notification,
-    });
+    yield axios_default().post(webhookUrl, Object.assign({}, notification));
 });
 
 ;// CONCATENATED MODULE: ./src/index.ts
@@ -10322,14 +10320,12 @@ var src_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argu
 const run = () => src_awaiter(void 0, void 0, void 0, function* () {
     try {
         const slackWebhookUrl = (0,core.getInput)('webhook-url');
-        console.log(slackWebhookUrl);
         const pullRequestArgs = getArgsFromGitHubPayload(github.context.payload);
         if (!pullRequestArgs) {
             (0,core.setFailed)('Not all required data was provided');
             return;
         }
         const notification = buildNotification(pullRequestArgs);
-        console.log(notification);
         if (!notification) {
             (0,core.setFailed)('Notification could not be built');
             return;

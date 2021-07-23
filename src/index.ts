@@ -7,7 +7,6 @@ import { getArgsFromGitHubPayload } from './helpers'
 const run = async () => {
   try {
     const slackWebhookUrl = getInput('webhook-url')
-    console.log(slackWebhookUrl)
     const pullRequestArgs = getArgsFromGitHubPayload(context.payload)
 
     if (!pullRequestArgs) {
@@ -16,7 +15,6 @@ const run = async () => {
     }
 
     const notification = buildNotification(pullRequestArgs)
-    console.log(notification)
 
     if (!notification) {
       setFailed('Notification could not be built')
