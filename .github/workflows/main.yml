@@ -1,0 +1,16 @@
+name: test
+on:
+  pull_request:
+    branches:
+      - master
+    types: [labeled]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: current branch
+        uses: fjogeleit/http-request-action@v1.8.0
+        with:
+          url: https://us-central1-pr-notifications-317820.cloudfunctions.net/postSlack
+          method: 'POST'
+          data: '{ "labels": "${{ join(github.event.pull_request.labels.*.name, '','') }}", "requestUrl": "https://github.com/${{ github.repository }}/checkout/pull/${{ github.event.pull_request.number }}", "title": "${{ github.event.pull_request.title }}", "user": "${{ github.event.pull_request.user.login }}" }'

@@ -1,0 +1,9 @@
+### .gitignore
+node_modules
+built
+
+### .gcloudignore file's content
+#!include:.gitignore
+# Do not ignore built (or dist) folder for gcloud:
+!/built
+!/dist

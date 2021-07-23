@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "../cat-browser-extension"
+	},
+	{
+		"path": "."
+	},
+	{
+		"path": "../web-vitals-extension"
+	}
+]
+}

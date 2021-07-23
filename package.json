@@ -1,0 +1,73 @@
+{
+  "name": "code-review-bot-function",
+  "version": "1.0.0",
+  "description": "Capture PR events and create Slack notifications based on labels",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brewsterbhg/code-review-bot-function.git"
+  },
+  "main": "dist/src/index.js",
+  "author": {
+    "name": "Keith Brewster",
+    "email": "keith.brewster22@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "slack"
+  ],
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist",
+    "compile": "tsc",
+    "coverage": "jest --coverage",
+    "cz": "git-cz",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "pre-commit": "npm run lint && npm run test && pretty-quick --staged",
+    "prepublish": "npm run lint && npm run test && npm run prebuild && npm run build",
+    "test": "jest --env=jsdom",
+    "watch": "tsc-watch --onSuccess \"node ./dist/index.js\""
+  },
+  "dependencies": {
+    "@actions/github": "5.0.0",
+    "@vercel/ncc": "0.29.0",
+    "axios": "0.21.1"
+  },
+  "devDependencies": {
+    "@actions/core": "1.4.0",
+    "@babel/cli": "7.14.5",
+    "@babel/core": "7.14.6",
+    "@babel/preset-env": "7.14.7",
+    "@commitlint/cli": "12.1.4",
+    "@commitlint/config-conventional": "12.1.4",
+    "@slack/types": "2.1.0",
+    "@tsconfig/recommended": "1.0.1",
+    "@types/express": "4.17.13",
+    "@types/jest": "26.0.24",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "4.28.4",
+    "@typescript-eslint/parser": "4.28.4",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "7.31.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-prettier": "3.4.0",
+    "husky": "7.0.1",
+    "jest": "27.0.6",
+    "nodemon": "2.0.12",
+    "prettier": "2.3.2",
+    "pretty-quick": "3.1.1",
+    "ts-jest": "27.0.3",
+    "tsc-watch": "4.4.0",
+    "typescript": "4.3.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

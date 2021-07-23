@@ -1,0 +1,10 @@
+name: 'Code Review Bot'
+description: ''
+inputs:
+  webhook-url:
+    description: 'The Slack webhook url'
+    required: true
+    default: ''
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
