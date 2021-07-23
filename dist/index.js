@@ -6393,7 +6393,8 @@ const postToSlack = () => __awaiter(void 0, void 0, void 0, function* () {
         // }
     }
     catch (error) {
-        _actions_core__WEBPACK_IMPORTED_MODULE_0___default().setFailed(error.message);
+        console.error(error);
+        // core.setFailed(error.message)
     }
 });
 postToSlack();
