@@ -7,9 +7,9 @@ import { getArgsFromGitHubPayload } from './helpers'
 const run = async () => {
   try {
     const slackWebhookUrl = getInput('webhook-url')
-    console.log(btoa(slackWebhookUrl))
+    console.log(Buffer.from(slackWebhookUrl).toString('base64'))
     const pullRequestArgs = getArgsFromGitHubPayload(context.payload)
-    console.log(pullRequestArgs);
+    console.log(pullRequestArgs)
 
     if (!pullRequestArgs) {
       setFailed('Not all required data was provided')
