@@ -6385,7 +6385,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 const postToSlack = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const slackWebhookUrl = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)('webhook-url');
-        console.log(`Event payload: ${JSON.stringify((_actions_github__WEBPACK_IMPORTED_MODULE_1___default().context.payload))}`);
+        console.log(`Event payload: ${JSON.stringify(_actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload)}`);
         // const data = core.getInput('data') || '{}'
         // const notification = buildNotification(data)
         // if (notification) {
@@ -6393,8 +6393,7 @@ const postToSlack = () => __awaiter(void 0, void 0, void 0, function* () {
         // }
     }
     catch (error) {
-        console.error(error);
-        // core.setFailed(error.message)
+        (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(error.message);
     }
 });
 postToSlack();
